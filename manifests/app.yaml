@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    name: app
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: maradwan/app-api
+        ports:
+        - containerPort: 5000
+        env:
+        - name: SQLALCHEMY_DATABASE_URI
+          value: "postgresql+psycopg2://postgres:password@db/data"
+        - name: APP_SECRET_KEY
+          value: "MohamedRadwan"
+        - name: SQLALCHEMY_TRACK_MODIFICATIONS
+          value: "True"          

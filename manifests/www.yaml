@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: www
+  labels:
+    name: www
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: www
+    spec:
+      containers:
+      - name: www
+        image: maradwan/app-api-www
+        ports:
+        - containerPort: 80
